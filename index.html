@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sundial Coffee Roasters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">Sundial</a>
+    <nav aria-label="Main">
+      <a href="#menu">Menu</a><a href="#about">Roastery</a><a href="#visit">Visit</a><a href="#cart">Order (<span id="count">0</span>)</a>
+    </nav>
+  </div>
+</header>
+ 
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Roasted to the hour you like.</h1>
+        <p class="lead">We roast small batches every morning. Slide to see how a bean changes from light to dark, and what ends up in your cup.</p>
+        <div class="roast">
+          <label for="roast"><span>Roast level</span><span id="rname">Medium</span></label>
+          <input type="range" id="roast" min="0" max="100" value="50" aria-describedby="rnotes">
+          <div class="scale"><span>Light</span><span>Dark</span></div>
+          <div class="notes" id="rnotes" aria-live="polite"></div>
+        </div>
+        <a class="btn" href="#menu">See the menu</a>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <g transform="rotate(-28 150 150)">
+            <ellipse class="bean" id="bean" cx="150" cy="150" rx="82" ry="118" fill="#B98B4E"/>
+            <ellipse cx="128" cy="105" rx="22" ry="48" fill="#fff" opacity=".12" transform="rotate(8 128 105)"/>
+            <path id="crease" d="M150 38 C128 90 172 130 150 184 C136 214 160 240 150 262" fill="none" stroke="#2A1A10" stroke-width="9" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+ 
+  <section id="menu">
+    <div class="wrap">
+      <h2>Menu</h2>
+      <p class="sub">Pick a size, add it to your order, then choose dine in, take away or delivery.</p>
+      <div class="menu-layout">
+        <div class="menu-main">
+          <div class="toolbar">
+            <input type="search" id="search" placeholder="Search the menu" aria-label="Search the menu">
+            <select id="sort" aria-label="Sort by">
+              <option value="featured">Sort: Featured</option>
+              <option value="low">Price: low to high</option>
+              <option value="high">Price: high to low</option>
+              <option value="name">Name: A to Z</option>
+            </select>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Menu categories" id="tabs"></div>
+          <div class="grid" id="grid"></div>
+        </div>
+ 
+        <aside class="cart" id="cart" aria-labelledby="cart-h">
+          <h3 id="cart-h">Your order</h3>
+          <div class="modes" role="group" aria-label="Order type">
+            <button data-mode="Dine in" aria-pressed="true">Dine in</button>
+            <button data-mode="Take away" aria-pressed="false">Take away</button>
+            <button data-mode="Delivery" aria-pressed="false">Delivery</button>
+          </div>
+          <p class="empty" id="empty">Your order is empty. Add a drink or a bite from the menu.</p>
+          <ul class="lines" id="lines"></ul>
+          <p class="done" id="done" role="status" hidden></p>
+          <div class="promo">
+            <input id="code" placeholder="Promo code, try SUNDIAL10" aria-label="Promo code">
+            <button id="apply" class="tab">Apply</button>
+          </div>
+          <p class="pmsg" id="pmsg" role="status"></p>
+          <dl class="totals">
+            <div><dt>Subtotal</dt><dd id="t-sub">$0.00</dd></div>
+            <div id="r-disc" hidden><dt>Discount</dt><dd id="t-disc"></dd></div>
+            <div id="r-fee" hidden><dt>Delivery fee</dt><dd id="t-fee"></dd></div>
+            <div class="grand"><dt>Total</dt><dd id="t-total">$0.00</dd></div>
+          </dl>
+          <button class="btn" id="place" style="width:100%;margin-top:16px" disabled>Place order</button>
+        </aside>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="about" id="about">
+    <div class="wrap">
+      <div>
+        <h2>We roast what we serve.</h2>
+        <p class="sub">Sundial started with a second-hand roaster and a single question: what does this coffee taste like an hour earlier or later in the roast?</p>
+        <p style="margin-top:16px">Today we buy directly from three farms, roast twice a week, and sell every bag within ten days of roasting. If you want to taste the difference, order the same bean as espresso and as filter.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Roasted</dt><dd>Tuesday &amp; Friday</dd></div>
+        <div><dt>Beans sold within</dt><dd>10 days of roast</dd></div>
+        <div><dt>Farms we buy from</dt><dd>3</dd></div>
+        <div><dt>Bring your own cup</dt><dd>Save $0.50</dd></div>
+      </dl>
+    </div>
+  </section>
+ 
+  <section class="visit" id="visit">
+    <div class="wrap">
+      <div>
+        <h2>Visit</h2>
+        <p class="sub">12 Mill Street, next to the old clock tower. Walk-ins welcome, and there’s a bike rack out front.</p>
+        <div class="status" id="status"><span class="dot"></span><span id="stxt">Checking hours…</span></div>
+        <p style="margin-top:24px"><a href="#" id="copy" class="btn" style="margin-top:0">Copy address</a></p>
+      </div>
+      <table class="hours" aria-label="Opening hours"><tbody id="hours"></tbody></table>
+    </div>
+  </section>
+</main>
+ 
+<footer>
+  <div class="wrap">
+    <span>© 2026 Sundial Coffee Roasters</span>
+    <span>hello@sundialcoffee.example</span>
+  </div>
+</footer>
+ 
+<script src="script.js"></script>
+</body>
+</html>
+ 
